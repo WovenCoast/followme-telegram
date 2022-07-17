@@ -57,6 +57,10 @@ module.exports = {
    */
   async execute(ctx) {
     const query = ctx.message.text.split(/[_ ]/g).slice(1).join(" ");
+    if (!query)
+      return ctx.reply(
+        "No boat id provided, you might want to use /search instead"
+      );
     ctx.replyWithChatAction("find_location");
     const info = await FollowMe.fetch(query);
     // console.log(query, info);
