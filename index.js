@@ -17,6 +17,7 @@ fs.readdirSync("./commands", { withFileTypes: true }).forEach((dirent) => {
     const command = require(`./commands/${dirent.name}`);
     if (!command.name) command.name = dirent.name.split(".")[0];
     commands.push(command);
+    ``;
   }
 });
 
