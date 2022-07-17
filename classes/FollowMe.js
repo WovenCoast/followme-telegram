@@ -30,11 +30,7 @@ class FollowMe {
    * @returns {BoatData[]}
    */
   static async all() {
-    const res = await axios
-      .get(`${api}/public`, {
-        headers,
-      })
-      .catch((e) => e.response);
+    const res = await axios.get(`${api}/public`).catch((e) => e.response);
     // the data is in html format with the json inside the body
     res.data = JSON.parse(
       res.data.split("<body>")[1].replace(/<\/?([A-Za-z]+)>/g, "")
@@ -60,11 +56,7 @@ class FollowMe {
    * @returns {BoatLocation}
    */
   static async fetch(id) {
-    const res = await axios
-      .get(`${api}/public/${id}`, {
-        headers,
-      })
-      .catch((e) => e.response);
+    const res = await axios.get(`${api}/public/${id}`).catch((e) => e.response);
     // same as ln13
     res.data = JSON.parse(
       res.data.split("<body>")[1].replace(/<\/?([A-Za-z]+)>/g, "")
