@@ -18,6 +18,10 @@ module.exports = {
    */
   async execute(ctx) {
     const query = ctx.message.text.split(/[_ ]/g).slice(1).join(" ");
+    if (!query)
+      return ctx.reply(
+        "No search query provided. Try using /search {boatname}"
+      );
     ctx.replyWithChatAction("typing");
     const matches = (await FollowMe.search(query)).slice(0, matchesLimit);
     ctx.reply(format(matches, query), {
